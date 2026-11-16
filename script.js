@@ -1,15 +1,12 @@
 /**
- * Landing Page - Dr. Igor Mont'Alverne | Cirurgião-Dentista
- * Arquivo único .js que injeta HTML, CSS e toda a funcionalidade na página.
- * 
- * Uso: em qualquer HTML, adicione:
- *   <script src="script.js"></script>
+ * Landing Page - Dr. Igor Mont'Alverne | Cirurgiao-Dentista
+ * Arquivo unico .js que injeta HTML, CSS e funcionalidade na pagina.
  */
 
 (function () {
   'use strict';
 
-  // ==================== ÍCONES SVG (azul metálico, minimalista) ====================
+  // ICONES SVG (azul metalico, minimalista)
   const ICON = {
     location: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
     phone: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`,
@@ -28,7 +25,6 @@
     send: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>"
   };
 
-  // ==================== CSS ====================
   const css = `
     :root {
       --azul: #1e3a8a;
@@ -60,11 +56,9 @@
     img { max-width: 100%; display: block; }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-    /* Ícones minimalistas */
     .icon { color: var(--azul-claro); display: inline-block; vertical-align: middle; }
     .icon svg { color: inherit; }
 
-    /* Animações */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
@@ -72,7 +66,6 @@
     .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
-    /* Header */
     header {
       position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
       transition: var(--transicao);
@@ -92,7 +85,6 @@
     .btn-header:hover { background: var(--azul-claro); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(30, 58, 138, 0.35); }
     .mobile-menu { display: none; font-size: 1.5rem; color: var(--cinza-escuro); cursor: pointer; }
 
-    /* Hero */
     .hero { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
     .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; filter: brightness(0.55); }
     .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 100%); z-index: -1; }
@@ -107,14 +99,12 @@
     .btn-outline { background: transparent; color: var(--branco); border: 2px solid rgba(255,255,255,0.5); }
     .btn-outline:hover { border-color: var(--branco); background: rgba(255,255,255,0.1); transform: translateY(-3px); }
 
-    /* Seções */
     section { padding: 100px 0; }
     .section-title { text-align: center; margin-bottom: 60px; }
     .section-title h2 { font-size: clamp(2rem, 4vw, 3rem); color: var(--azul); margin-bottom: 16px; letter-spacing: -1px; }
     .section-title p { color: var(--cinza-medio); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
     .divider { width: 60px; height: 3px; background: var(--azul-claro); margin: 12px auto 0; border-radius: 2px; }
 
-    /* Sobre */
     .sobre { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
     .sobre-texto h3 { font-size: 2rem; color: var(--azul); margin-bottom: 20px; }
     .sobre-texto p { color: var(--cinza-medio); font-size: 1.05rem; margin-bottom: 20px; }
@@ -125,7 +115,6 @@
     .foto-placeholder { width: 100%; height: 500px; background: var(--cinza-claro); border-radius: 24px; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; color: var(--cinza-medio); font-size: 1rem; border: 1px solid rgba(30, 58, 138, 0.1); }
     .foto-badge { position: absolute; bottom: 20px; left: 20px; background: var(--branco); padding: 12px 20px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; color: var(--azul); box-shadow: var(--sombra); border: 1px solid var(--prata-claro); }
 
-    /* Trabalho */
     .trabalho-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
     .trabalho-item { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 1; cursor: pointer; background: var(--cinza-claro); }
     .trabalho-item img { width: 100%; height: 100%; object-fit: cover; transition: var(--transicao); }
@@ -134,7 +123,6 @@
     .trabalho-item:hover img { transform: scale(1.05); }
     .trabalho-overlay span { color: var(--branco); font-family: 'Playfair Display', serif; font-size: 1.2rem; }
 
-    /* Serviços */
     .servicos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
     .servico-card { background: var(--branco); padding: 40px 30px; border-radius: 24px; border: 1px solid rgba(30, 58, 138, 0.08); transition: var(--transicao); position: relative; overflow: hidden; }
     .servico-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--azul), var(--azul-claro)); transform: scaleX(0); transition: var(--transicao); transform-origin: left; }
@@ -145,7 +133,6 @@
     .servico-card h3 { font-size: 1.3rem; color: var(--cinza-escuro); margin-bottom: 12px; }
     .servico-card p { color: var(--cinza-medio); font-size: 0.95rem; line-height: 1.6; }
 
-    /* Contato */
     .contato { background: var(--branco); }
     .contato-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
     .contato-info h3 { font-size: 2rem; color: var(--azul); margin-bottom: 20px; }
@@ -162,7 +149,6 @@
     .form-group input:focus, .form-group textarea:focus { border-color: var(--azul-claro); box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1); }
     .form-group textarea { min-height: 140px; resize: vertical; }
 
-    /* Footer */
     footer { background: var(--cinza-escuro); color: var(--branco); padding: 60px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
     .footer-content { display: flex; flex-direction: column; align-items: center; gap: 30px; text-align: center; }
     .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--branco); }
@@ -172,7 +158,6 @@
     .footer-social a:hover { background: var(--azul-claro); border-color: var(--azul-claro); transform: translateY(-4px); }
     .footer-copy { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 20px; }
 
-    /* Chat IA */
     .chat-toggle { position: fixed; bottom: 30px; right: 30px; width: 64px; height: 64px; background: var(--azul); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--branco); cursor: pointer; z-index: 9999; box-shadow: 0 8px 24px rgba(30, 58, 138, 0.35); transition: var(--transicao); }
     .chat-toggle:hover { background: var(--azul-claro); transform: scale(1.1) rotate(15deg); }
     .chat-box { position: fixed; bottom: 110px; right: 30px; width: 360px; height: 520px; background: var(--branco); border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); border: 1px solid rgba(30, 58, 138, 0.1); z-index: 9998; display: none; flex-direction: column; overflow: hidden; animation: fadeUp 0.4s ease-out; }
@@ -191,7 +176,6 @@
     .chat-typing { font-size: 0.8rem; color: var(--prata); font-style: italic; margin-left: 8px; animation: pulse 1.5s infinite; }
     @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
 
-    /* Mobile */
     @media (max-width: 768px) {
       .mobile-menu { display: block; }
       nav { position: fixed; top: 80px; left: -100%; width: 100%; background: var(--branco); border-bottom: 1px solid rgba(30, 58, 138, 0.06); transition: var(--transicao); padding: 30px 20px; }
@@ -208,7 +192,6 @@
     }
   `;
 
-  // ==================== HTML ====================
   const html = `
     <header id="header">
       <div class="nav-container container">
@@ -217,12 +200,12 @@
           <ul>
             <li><a href="#sobre">Sobre Mim</a></li>
             <li><a href="#trabalho">Meu Trabalho</a></li>
-            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#servicos">Servicos</a></li>
             <li><a href="#contato">Contato</a></li>
           </ul>
         </div>
         <a href="#contato" class="btn btn-header">Agendar</a>
-        <div class="mobile-menu" id="mobileMenu">☰</div>
+        <div class="mobile-menu" id="mobileMenu">&#9776;</div>
       </div>
     </header>
 
@@ -230,8 +213,8 @@
       <img src="https://images.unsplash.com/photo-1600859257202-9e86d4482084?auto=format&fit=crop&w=1600&q=80" alt="Sorriso" class="hero-bg">
       <div class="hero-overlay"></div>
       <div class="hero-content reveal">
-        <h1>Seu sorriso tem identidade.<br><span>Meu cuidado também.</span></h1>
-        <p>Cirurgião-Dentista especializado em estética do sorriso com precisão e naturalidade. Sobral - CE.</p>
+        <h1>Seu sorriso tem identidade.<br><span>Meu cuidado tambem.</span></h1>
+        <p>Cirurgiao-Dentista especializado em estetica do sorriso com precisao e naturalidade. Sobral - CE.</p>
         <div class="cta-group">
           <a href="#contato" class="btn btn-primary">Agendar Consulta</a>
           <a href="#trabalho" class="btn btn-outline">Ver Meu Trabalho</a>
@@ -244,23 +227,23 @@
         <div class="section-title reveal">
           <h2>Sobre Mim</h2>
           <div class="divider"></div>
-          <p>Dr. Igor Mont'Alverne | Cirurgião-Dentista em Sobral - CE</p>
+          <p>Dr. Igor Mont'Alverne | Cirurgiao-Dentista em Sobral - CE</p>
         </div>
         <div class="sobre reveal">
           <div class="sobre-texto">
-            <h3>Estética do sorriso com precisão e naturalidade</h3>
-            <p>Olá, sou o Dr. Igor Mont'Alverne, Cirurgião-Dentista. Atendo em Sobral - CE com foco em odontologia moderna, humanizada e voltada para a estética dental com resultados naturais e harmônicos.</p>
-            <p>Minha missão é cuidar do seu sorriso com a mesma atenção e dedicação que dedico ao meu próprio, entregando saúde, confiança e bem-estar para cada paciente.</p>
+            <h3>Estetica do sorriso com precisao e naturalidade</h3>
+            <p>Ola, sou o Dr. Igor Mont'Alverne, Cirurgiao-Dentista. Atendo em Sobral - CE com foco em odontologia moderna, humanizada e voltada para a estetica dental com resultados naturais e harmonicos.</p>
+            <p>Minha missao e cuidar do seu sorriso com a mesma atencao e dedicacao que dedico ao meu proprio, entregando saude, confianca e bem-estar para cada paciente.</p>
             <ul class="sobre-destaques">
-              <li><span class="icon">${ICON.check}</span><span>Facetas e Reab. estética</span></li>
+              <li><span class="icon">${ICON.check}</span><span>Facetas e Reab. estetica</span></li>
               <li><span class="icon">${ICON.check}</span><span>Ortodontia e Invisalign</span></li>
-              <li><span class="icon">${ICON.check}</span><span>Cirurgias e Prótese</span></li>
-              <li><span class="icon">${ICON.check}</span><span>Atendimento acolhedor à comunidade LGBTQ+</span></li>
+              <li><span class="icon">${ICON.check}</span><span>Cirurgias e Proteses</span></li>
+              <li><span class="icon">${ICON.check}</span><span>Atendimento acolhedor a comunidade LGBTQ+</span></li>
             </ul>
           </div>
           <div class="sobre-foto">
             <div class="foto-placeholder">
-              <span>Foto profissional do Cirurgião Dentista</span>
+              <span>Foto profissional do Cirurgiao Dentista</span>
             </div>
             <div class="foto-badge">
               ${ICON.location} R. Cel. Mont'Alverne, 905 - Centro, Sobral - CE
@@ -275,12 +258,12 @@
         <div class="section-title reveal">
           <h2>Meu Trabalho</h2>
           <div class="divider"></div>
-          <p>Transformações de sorrisos com técnica e arte odontológica</p>
+          <p>Transformacoes de sorrisos com tecnica e arte odontologica</p>
         </div>
         <div class="trabalho-grid">
           <div class="trabalho-item reveal">
             <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=600&q=80" alt="Sorriso 1">
-            <div class="trabalho-overlay"><span>Estética do Sorriso</span></div>
+            <div class="trabalho-overlay"><span>Estetica do Sorriso</span></div>
           </div>
           <div class="trabalho-item reveal">
             <img src="https://images.unsplash.com/photo-1598595404523-08ffda257f41?auto=format&fit=crop&w=600&q=80" alt="Sorriso 2">
@@ -300,7 +283,7 @@
           </div>
           <div class="trabalho-item reveal">
             <img src="https://images.unsplash.com/photo-1592174482127-9c97e7f3455b?auto=format&fit=crop&w=600&q=80" alt="Sorriso 6">
-            <div class="trabalho-overlay"><span>Reabilitação Oral</span></div>
+            <div class="trabalho-overlay"><span>Reabilitacao Oral</span></div>
           </div>
         </div>
       </div>
@@ -309,40 +292,40 @@
     <section id="servicos">
       <div class="container">
         <div class="section-title reveal">
-          <h2>Serviços</h2>
+          <h2>Servicos</h2>
           <div class="divider"></div>
-          <p>Cuidados odontológicos modernos para o seu sorriso</p>
+          <p>Cuidados odontologicos modernos para o seu sorriso</p>
         </div>
         <div class="servicos-grid">
           <div class="servico-card reveal">
             <div class="servico-icon">${ICON.tooth}</div>
-            <h3>Facetas e Reab. Estética</h3>
-            <p>Transforme a aparência do seu sorriso com facetas de porcelana e resina, com acabamento natural e duradouro.</p>
+            <h3>Facetas e Reab. Estetica</h3>
+            <p>Transforme a aparencia do seu sorriso com facetas de porcelana e resina, com acabamento natural e duradouro.</p>
           </div>
           <div class="servico-card reveal">
             <div class="servico-icon">${ICON.sparkle}</div>
             <h3>Clareamento Dental</h3>
-            <p>Recupere o brilho dos dentes com técnicas seguras e eficazes, respeitando a saúde do esmalte dental.</p>
+            <p>Recupere o brilho dos dentes com tecnicas seguras e eficazes, respeitando a saude do esmalte dental.</p>
           </div>
           <div class="servico-card reveal">
             <div class="servico-icon">${ICON.align}</div>
             <h3>Ortodontia e Invisalign</h3>
-            <p>Alinhamento dental discreto e eficiente com aparelhos fixos ou alinhadores invisíveis personalizados.</p>
+            <p>Alinhamento dental discreto e eficiente com aparelhos fixos ou alinhadores invisiveis personalizados.</p>
           </div>
           <div class="servico-card reveal">
             <div class="servico-icon">${ICON.medical}</div>
-            <h3>Cirurgias e Prótese</h3>
-            <p>Procedimentos cirúrgicos orais e reabilitação protética com precisão e conforto ao paciente.</p>
+            <h3>Cirurgias e Proteses</h3>
+            <p>Procedimentos cirurgicos orais e reabilitacao protetica com precisao e conforto ao paciente.</p>
           </div>
           <div class="servico-card reveal">
             <div class="servico-icon">${ICON.smile}</div>
-            <h3>Harmonização Orofacial</h3>
-            <p>Procedimentos estéticos faciais suaves que valorizam a harmonia do sorriso com a face.</p>
+            <h3>Harmonizacao Orofacial</h3>
+            <p>Procedimentos esteticos faciais suaves que valorizam a harmonia do sorriso com a face.</p>
           </div>
           <div class="servico-card reveal">
             <div class="servico-icon">${ICON.child}</div>
             <h3>Odontopediatria</h3>
-            <p>Cuidado especializado para os pequenos, criando uma experiência positiva desde a primeira consulta.</p>
+            <p>Cuidado especializado para os pequenos, criando uma experiencia positiva desde a primeira consulta.</p>
           </div>
         </div>
       </div>
@@ -353,11 +336,11 @@
         <div class="contato-grid">
           <div class="contato-info reveal">
             <h3>Vamos conversar?</h3>
-            <p>Agende sua consulta ou tire suas dúvidas. Estou aqui para cuidar do seu sorriso com atenção e carinho.</p>
+            <p>Agende sua consulta ou tire suas duvidas. Estou aqui para cuidar do seu sorriso com atencao e carinho.</p>
             <div class="contato-item">
               <span class="icon">${ICON.location}</span>
               <div>
-                <h4>Endereço</h4>
+                <h4>Endereco</h4>
                 <p>R. Cel. Mont'Alverne, 905 - Centro, Sobral - CE, 62100-000</p>
               </div>
             </div>
@@ -371,7 +354,7 @@
             <div class="contato-item">
               <span class="icon">${ICON.clock}</span>
               <div>
-                <h4>Horário</h4>
+                <h4>Horario</h4>
                 <p>Aberto · Fecha 19:00</p>
               </div>
             </div>
@@ -404,7 +387,7 @@
               </div>
               <div class="form-group">
                 <label for="mensagem">Mensagem</label>
-                <textarea id="mensagem" name="mensagem" placeholder="Como posso ajudar você?" required></textarea>
+                <textarea id="mensagem" name="mensagem" placeholder="Como posso ajudar voce?" required></textarea>
               </div>
               <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensagem</button>
             </form>
@@ -423,7 +406,7 @@
             <a href="mailto:contato@drigormontalverne.com.br" aria-label="E-mail">${ICON.link}</a>
           </div>
           <div class="footer-copy">
-            &copy; 2026 Dr. Igor Mont'Alverne - Cirurgião-Dentista. Todos os direitos reservados.
+            &copy; 2026 Dr. Igor Mont'Alverne - Cirurgiao-Dentista. Todos os direitos reservados.
           </div>
         </div>
       </div>
@@ -437,7 +420,7 @@
       </div>
       <div class="chat-messages" id="chatMessages">
         <div class="chat-message ai">
-          Olá! Sou o assistente virtual do Dr. Igor Mont'Alverne. Como posso ajudar você hoje?
+          Ola! Sou o assistente virtual do Dr. Igor Mont'Alverne. Como posso ajudar voce hoje?
         </div>
       </div>
       <div class="chat-input-area">
@@ -447,17 +430,13 @@
     </div>
   `;
 
-  // ==================== INJEÇÃO ====================
   function init() {
-    // Injetar CSS
     const style = document.createElement('style');
     style.textContent = css;
     document.head.appendChild(style);
 
-    // Injetar HTML no body
     document.body.insertAdjacentHTML('afterbegin', html);
 
-    // Google Fonts
     const link = document.createElement('link');
     link.rel = 'preconnect';
     link.href = 'https://fonts.googleapis.com';
@@ -472,9 +451,6 @@
     font.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap';
     document.head.appendChild(font);
 
-    // ==================== FUNCIONALIDADE JS ====================
-
-    // Header scroll
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
@@ -486,21 +462,19 @@
       }
     });
 
-    // Mobile menu
     const mobileMenu = document.getElementById('mobileMenu');
     const nav = document.getElementById('nav');
     mobileMenu.addEventListener('click', () => {
       const active = nav.classList.toggle('active');
-      mobileMenu.textContent = active ? '✕' : '☰';
+      mobileMenu.textContent = active ? '&#10005;' : '&#9776;';
     });
     document.querySelectorAll('nav a').forEach(link => {
       link.addEventListener('click', () => {
         nav.classList.remove('active');
-        mobileMenu.textContent = '☰';
+        mobileMenu.textContent = '&#9776;';
       });
     });
 
-    // Scroll reveal
     const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -509,7 +483,6 @@
     }, observerOptions);
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Formulário contato
     const formContato = document.getElementById('formContato');
     formContato.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -525,7 +498,6 @@
       }, 1500);
     });
 
-    // Chat IA
     const chatToggle = document.getElementById('chatToggle');
     const chatBox = document.getElementById('chatBox');
     const chatClose = document.getElementById('chatClose');
@@ -547,7 +519,7 @@
 
     function addMessage(text, type) {
       const div = document.createElement('div');
-      div.className = `chat-message ${type}`;
+      div.className = 'chat-message ' + type;
       div.textContent = text;
       chatMessages.appendChild(div);
       chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -558,7 +530,7 @@
       if (show && !typing) {
         typing = document.createElement('div');
         typing.className = 'chat-typing';
-        typing.textContent = 'IA está digitando...';
+        typing.textContent = 'IA esta digitando...';
         chatMessages.appendChild(typing);
       } else if (!show && typing) {
         typing.remove();
@@ -593,11 +565,11 @@
           else aiText = JSON.stringify(data);
           addMessage(aiText, 'ai');
         } else {
-          addMessage('Desculpe, não consegui processar sua mensagem no momento. Tente novamente mais tarde.', 'ai');
+          addMessage('Desculpe, nao consegui processar sua mensagem no momento. Tente novamente mais tarde.', 'ai');
         }
       } catch (error) {
         setTyping(false);
-        addMessage('Erro de conexão com o servidor de IA. Verifique sua internet e tente novamente.', 'ai');
+        addMessage('Erro de conexao com o servidor de IA. Verifique sua internet e tente novamente.', 'ai');
         console.error('Erro no chat IA:', error);
       }
     }
